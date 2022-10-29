@@ -37,19 +37,6 @@ const UserSchema = new Schema(
       type: String,
       max: 1024,
     },
-    followers: {
-      type: [String],
-    },
-    following: {
-      type: [String],
-    },
-    likes: {
-      type: [String],
-    },
-    is_super_admin: {
-      type: Boolean,
-      default: false,
-    },
     is_admin: {
       type: Boolean,
       default: false,
