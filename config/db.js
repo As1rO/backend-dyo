@@ -1,14 +1,9 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import admin from 'firebase-admin';
+import serviceAccount from './serviceAccountKey.json';
 
-dotenv.config({
-  path: './config/.env',
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://vincent-fcb1a-default-rtdb.europe-west1.firebasedatabase.app/'
 });
 
-mongoose
-  .connect(process.env.DB_USER_PASS, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((error) => console.log('Failed to mongoDB', error));
+export const db = admin.database();
