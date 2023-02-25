@@ -1,9 +1,12 @@
 import admin from 'firebase-admin';
-import serviceAccount from './serviceAccountKey.json';
+import credentials from './serviceAccountKey.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://vincent-fcb1a-default-rtdb.europe-west1.firebasedatabase.app/'
+  credential: admin.credential.cert(credentials),
+  databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 
 export const db = admin.database();

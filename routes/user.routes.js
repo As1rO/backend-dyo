@@ -1,11 +1,13 @@
 import { Router } from 'express';
-
+import { getUsers, createUser } from '../controllers/user.controller.js';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    console.log('Hello World!'); // affiche 'Hello World!' dans la console
-    res.send('Hello World!');
-  });
+// Route pour obtenir tous les utilisateurs
+router.get('/', getUsers);
 
-  export default router;
+// Route pour créer un nouvel utilisateur
+router.post('/', createUser);
+
+// Exporter la fonction middleware
+export default (db) => router;
