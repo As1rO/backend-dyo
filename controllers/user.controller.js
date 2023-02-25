@@ -1,8 +1,10 @@
 import { db } from '../config/db.js';
+import User from '../models/user.model.js';
 
 export const getUsers = async (req, res) => {
   try {
-    const snapshot = await db.ref('users').once('value');
+    const usersRef = db.ref('users');
+    const snapshot = await usersRef.once('value');
     const users = snapshot.val();
     res.status(200).json(users);
   } catch (error) {
@@ -15,14 +17,11 @@ export const getUsers = async (req, res) => {
 export const createUser = async (req, res) => {
   try {
     const { name, email } = req.body;
-    const userRef = db.ref('users').push();
-    const newUser = {
-      id: userRef.key,
-      name,
-      email,
-    };
-    await userRef.set(newUser);
-    res.status(201).json(newUser);
+    const usersRef = db.ref('users');
+    const newUserRef = usersRef.push();
+    const newUser = new User(newUserRef.key, name, email);
+    await newUserRef.set(newUser.toJson());
+    res.status(201).json(newUser.toJson());
   } catch (error) {
     res
       .status(500)
