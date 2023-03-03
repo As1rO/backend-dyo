@@ -5,10 +5,12 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+import Input from './forms/TextInput.vue'
 </script>
 
 <template>
   <WelcomeItem>
+  <Input type="password" label="test input" name="input" placeholder="test" required />
     <template #icon>
       <DocumentationIcon />
     </template>
