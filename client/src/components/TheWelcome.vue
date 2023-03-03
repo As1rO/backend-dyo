@@ -6,11 +6,17 @@ import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 import Input from './forms/TextInput.vue'
+import CustomSelect from './forms/CustomSelect.vue'
 </script>
 
 <template>
   <WelcomeItem>
   <Input type="password" label="test input" name="input" placeholder="test" required />
+  <custom-select
+      :options="['Option 1', 'Option 2', 'Option 3']"
+      placeholder="Choose an option"
+      label="Select an option"
+    />
     <template #icon>
       <DocumentationIcon />
     </template>
