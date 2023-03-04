@@ -90,5 +90,5 @@ function handleBlur() {
 
 
 <style scoped>
- @import "../../assets/scss/components/forms/text-input.scss";
+ @import "~/components/forms/text-input.scss";
 </style>

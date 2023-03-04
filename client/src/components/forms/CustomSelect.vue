@@ -93,5 +93,5 @@ function handleBlur() {
 
 </script>
   <style scoped>
-   @import "../../assets/scss/components/forms/select.scss";
+   @import "~/components/forms/custom-select.scss";
   </style>
